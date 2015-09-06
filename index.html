@@ -4,18 +4,30 @@
         <meta charset="utf-8">
         <title>D3 Test</title>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.js">i</script>
+        <style>
+            div.bar {
+                display: inline-block;
+                width: 20px;
+                height: 75px;   /* We'll override this later */
+                margin-right: 2px;
+                background-color: teal;
+            }
+        </style>
     </head>
     <body>
         <script type="text/javascript">
             var dataset = [ 5, 10, 15, 20, 25 ];
-            d3.select("body").selectAll("p")
+            d3.select("body").selectAll("div")
                 .data(dataset)
                 .enter()
-                .append("p")
-                .text(function (d) { return d; })
+                .append("div")
+                .attr("class", "bar")
                 .style("color", function (d) {
                     return (d > 15) ? "red" : "blue";
-                });
+                    })
+                .style("height", function (d) {
+                    return (d * 5) + "px";    
+                    });
         </script>
     </body>
 </html>
