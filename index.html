@@ -16,14 +16,19 @@
     </head>
     <body>
         <script type="text/javascript">
-            var dataset = [ 5, 10, 15, 20, 25 ];
+            var dataset = [];
+            for (var i = 0; i < 25; ++i ) {
+                var value = Math.round(Math.random() * 29) + 1;
+                dataset.push(value);
+            }
+
             d3.select("body").selectAll("div")
                 .data(dataset)
                 .enter()
                 .append("div")
                 .attr("class", "bar")
-                .style("color", function (d) {
-                    return (d > 15) ? "red" : "blue";
+                .style("background-color", function (d) {
+                    return (d > 15) ? "#cc0000" : "#009933";
                     })
                 .style("height", function (d) {
                     return (d * 5) + "px";    
